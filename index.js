@@ -62,6 +62,7 @@ function CASAuthentication(options) {
         }
     }
     else if (this.cas_version === '2.0' || this.cas_version === '3.0') {
+        console.log("Now in the validate function");
         this._validateUri = (this.cas_version === '2.0' ? '/serviceValidate' : '/p3/serviceValidate');
         this._validate = function(body, callback) {
             parseXML(body, {

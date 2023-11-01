@@ -178,6 +178,7 @@ function CASAuthentication(options) {
 CASAuthentication.prototype.bounce = function(req, res, next) {
 
     // Handle the request with the bounce authorization type.
+    console.log("CAS bounce reached");
     this._handle(req, res, next, AUTH_TYPE.BOUNCE);
 };
 

@@ -1,6 +1,6 @@
 {
   "name": "express-cas-authentication",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A CAS authentication library designed to be used as middleware for an Express server.",
   "keywords": [
     "cas",
@@ -12,16 +12,15 @@
     "middleware",
     "express"
   ],
-  "homepage": "https://github.com/fatsheepcn/cas-authentication",
+  "homepage": "https://github.com/nicholasfiore/cas-authentication",
   "bugs": {
-    "url": "https://github.com/fatsheepcn/cas-authentication/issues"
+    "url": "https://github.com/nicholasfiore/cas-authentication/issues"
   },
   "license": "MIT",
-  "author": "fatsheepcn <fatsheep_cn@163.com>",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fatsheepcn/cas-authentication.git"
+    "url": "https://github.com/nicholasfiore/cas-authentication.git"
   },
   "dependencies": {
     "xml2js": "^0.4.8"

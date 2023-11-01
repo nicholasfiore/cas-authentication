@@ -350,6 +350,7 @@ CASAuthentication.prototype._handleTicket = function(req, res, next) {
         response.on('end', function() {
             this._validate(body, function(err, user, attributes) {
                 console.log("validate");
+                console.log(JSON.stringify(body));
                 if (err) {
                     console.log(err);
                     res.sendStatus(401);

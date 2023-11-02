@@ -249,11 +249,17 @@ CASAuthentication.prototype._login = function(req, res, next) {
     req.session.cas_return_to = req.query.returnTo || url.parse(req.originalUrl).path;
 
     // Set up the query parameters.
-    var query = {
-        service: this.service_url + url.parse(req.originalUrl).pathname,
-        renew: this.renew
-    };
-
+    if (this.renew) {
+        var query = {
+            service: this.service_url + url.parse(req.originalUrl).pathname,
+            renew: this.renew
+        };
+    }
+    else {
+        var query = {
+            service: this.service_url + url.parse(req.originalUrl).pathname
+        }
+    }
     // Redirect to the CAS login.
     res.redirect( this.cas_url + url.format({
         pathname: '/login',
@@ -350,7 +356,6 @@ CASAuthentication.prototype._handleTicket = function(req, res, next) {
             this._validate(body, function(err, user, attributes) {
                 console.log("validate");
                 console.log(body);
-                console.log(JSON.stringify(body));
                 if (err) {
                     console.log(err);
                     res.sendStatus(401);

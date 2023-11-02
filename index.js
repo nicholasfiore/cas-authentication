@@ -62,7 +62,6 @@ function CASAuthentication(options) {
         }
     }
     else if (this.cas_version === '2.0' || this.cas_version === '3.0') {
-        console.log("Now in the validate function");
         this._validateUri = (this.cas_version === '2.0' ? '/serviceValidate' : '/p3/serviceValidate');
         this._validate = function(body, callback) {
             parseXML(body, {
@@ -169,6 +168,8 @@ function CASAuthentication(options) {
     this.bounce_redirect = this.bounce_redirect.bind(this);
     this.block           = this.block.bind(this);
     this.logout          = this.logout.bind(this);
+
+    console.log(this.renew);
 }
 
 /**
@@ -342,6 +343,7 @@ CASAuthentication.prototype._handleTicket = function(req, res, next) {
     }
 
     var request = this.request_client.request(requestOptions, function(response) {
+        console.log(JSON.stringify(request));
         response.setEncoding( 'utf8' );
         var body = '';
         response.on( 'data', function(chunk) {
@@ -350,6 +352,7 @@ CASAuthentication.prototype._handleTicket = function(req, res, next) {
         response.on('end', function() {
             this._validate(body, function(err, user, attributes) {
                 console.log("validate");
+                console.log(body);
                 console.log(JSON.stringify(body));
                 if (err) {
                     console.log(err);

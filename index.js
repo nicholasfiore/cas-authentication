@@ -168,8 +168,6 @@ function CASAuthentication(options) {
     this.bounce_redirect = this.bounce_redirect.bind(this);
     this.block           = this.block.bind(this);
     this.logout          = this.logout.bind(this);
-
-    console.log(this.renew);
 }
 
 /**
@@ -343,7 +341,6 @@ CASAuthentication.prototype._handleTicket = function(req, res, next) {
     }
 
     var request = this.request_client.request(requestOptions, function(response) {
-        console.log(JSON.stringify(request));
         response.setEncoding( 'utf8' );
         var body = '';
         response.on( 'data', function(chunk) {

@@ -260,8 +260,6 @@ CASAuthentication.prototype._login = function(req, res, next) {
             service: this.service_url + url.parse(req.originalUrl).pathname
         }
     }
-    console.log(req);
-    console.log(res);
     // Redirect to the CAS login.
     res.redirect( this.cas_url + url.format({
         pathname: '/login',
